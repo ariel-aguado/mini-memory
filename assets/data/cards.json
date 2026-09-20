@@ -1,0 +1,48 @@
+{
+  "temas": {
+    "animales": {
+      "nombre": "🐾 Animales",
+      "pares": [
+        { "id": "gato", "valor": "🐱" },
+        { "id": "perro", "valor": "🐶" },
+        { "id": "leon", "valor": "🦁" },
+        { "id": "panda", "valor": "🐼" },
+        { "id": "zorro", "valor": "🦊" },
+        { "id": "pajaro", "valor": "🐦" }
+      ]
+    },
+    "frutas": {
+      "nombre": "🍎 Frutas",
+      "pares": [
+        { "id": "manzana", "valor": "🍎" },
+        { "id": "platano", "valor": "🍌" },
+        { "id": "uva", "valor": "🍇" },
+        { "id": "fresa", "valor": "🍓" },
+        { "id": "naranja", "valor": "🍊" },
+        { "id": "sandia", "valor": "🍉" }
+      ]
+    },
+    "emojis": {
+      "nombre": "😄 Emojis",
+      "pares": [
+        { "id": "risa", "valor": "😄" },
+        { "id": "lentes", "valor": "🤓" },
+        { "id": "fuego", "valor": "🔥" },
+        { "id": "estrella", "valor": "⭐" },
+        { "id": "corazon", "valor": "❤️" },
+        { "id": "cohete", "valor": "🚀" }
+      ]
+    },
+    "simbolos": {
+      "nombre": "⚡ Símbolos",
+      "pares": [
+        { "id": "python", "valor": "🐍" },
+        { "id": "cafe", "valor": "☕" },
+        { "id": "musica", "valor": "🎵" },
+        { "id": "luz", "valor": "💡" },
+        { "id": "magic", "valor": "✨" },
+        { "id": "gamepad", "valor": "🎮" }
+      ]
+    }
+  }
+}
