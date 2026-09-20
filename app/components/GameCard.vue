@@ -40,7 +40,7 @@ const handleClick = (): void => {
     >
       <div class="card-face card-face-front">
         <span
-          class="text-4xl sm:text-5xl md:text-6xl text-brand-400 transition-transform group-hover:scale-110"
+          class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-brand-400 transition-transform group-hover:scale-110"
           aria-hidden="true"
         >
           ?
@@ -48,12 +48,12 @@ const handleClick = (): void => {
       </div>
 
       <div class="card-face card-face-back" :class="matched && 'is-matched'">
-        <span class="text-5xl sm:text-6xl md:text-7xl select-none" :class="matched && 'animate-pop'">
+        <span class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl select-none" :class="matched && 'animate-pop'">
           {{ value }}
         </span>
         <span
           v-if="matched"
-          class="absolute top-1.5 right-1.5 text-green-500 text-xl sm:text-2xl"
+          class="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 text-green-500 text-xs sm:text-sm md:text-base"
           aria-hidden="true"
         >
           ✓

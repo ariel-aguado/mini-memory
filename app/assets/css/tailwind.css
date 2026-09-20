@@ -125,9 +125,16 @@
     @apply pointer-events-none absolute rounded-full blur-3xl opacity-50 animate-blob-float;
   }
 
+  /* Tapestry: a repeating tile of tiny brand shapes behind the whole page */
+  .bg-tapestry {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect x='6' y='6' width='16' height='16' rx='5' fill='%237c3aed' fill-opacity='0.07'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%23ec4899' fill-opacity='0.07'/%3E%3Crect x='34' y='38' width='14' height='14' rx='4' fill='%23f59e0b' fill-opacity='0.07'/%3E%3Ccircle cx='12' cy='48' r='7' fill='%237c3aed' fill-opacity='0.06'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 64px 64px;
+  }
+
   /* Card flip: outer scene provides perspective, inner face rotates on the Y axis */
   .card-scene {
-    @apply relative aspect-square w-full cursor-pointer;
+    @apply relative h-full w-full cursor-pointer;
     perspective: 1000px;
   }
 
@@ -141,13 +148,17 @@
   }
 
   .card-face {
-    @apply absolute inset-0 flex items-center justify-center rounded-2xl border-2 sm:border-[3px]
+    @apply absolute inset-0 flex items-center justify-center rounded-xl sm:rounded-2xl border-2
            shadow-lg transition-shadow duration-300;
     backface-visibility: hidden;
   }
 
   .card-face-front {
     @apply border-brand-300 bg-white hover:shadow-xl hover:border-brand-400;
+    /* Tighter, denser tapestry tile so the unrevealed face reads as textured, not flat */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='3' cy='3' r='1.6' fill='%237c3aed' fill-opacity='0.14'/%3E%3Ccircle cx='13' cy='10' r='1.6' fill='%237c3aed' fill-opacity='0.14'/%3E%3Ccircle cx='6' cy='16' r='1.6' fill='%237c3aed' fill-opacity='0.14'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 14px 14px;
   }
 
   .card-face-back {
