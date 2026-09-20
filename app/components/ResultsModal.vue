@@ -43,11 +43,11 @@ const isNewRecord = (): boolean => {
       @click.self="emit('close')"
     >
       <div
-        class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full animate-fade-in"
+        class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full animate-pop"
       >
         <div class="text-center mb-6">
-          <div class="text-6xl mb-2" aria-hidden="true">🏆</div>
-          <h2 id="results-title" class="text-3xl font-bold text-brand-700 mb-2">
+          <div class="text-6xl mb-2 animate-bounce" aria-hidden="true">🏆</div>
+          <h2 id="results-title" class="font-display text-3xl font-semibold text-brand-700 mb-2">
             ¡Has ganado!
           </h2>
           <p class="text-brand-500">
@@ -56,17 +56,23 @@ const isNewRecord = (): boolean => {
         </div>
 
         <div class="grid grid-cols-2 gap-4 mb-6">
-          <div class="flex flex-col items-center p-4 bg-brand-50 rounded-xl">
+          <div
+            class="flex flex-col items-center p-4 bg-brand-50 rounded-xl animate-card-enter"
+            style="animation-delay: 100ms"
+          >
             <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">
               Movimientos
             </span>
-            <span class="text-3xl font-bold text-brand-700">{{ moves }}</span>
+            <span class="font-display text-3xl font-semibold text-brand-700">{{ moves }}</span>
           </div>
-          <div class="flex flex-col items-center p-4 bg-brand-50 rounded-xl">
+          <div
+            class="flex flex-col items-center p-4 bg-brand-50 rounded-xl animate-card-enter"
+            style="animation-delay: 180ms"
+          >
             <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">
               Tiempo
             </span>
-            <span class="text-3xl font-bold text-brand-700 tabular-nums">
+            <span class="font-display text-3xl font-semibold text-brand-700 tabular-nums">
               {{ formatTime(seconds) }}
             </span>
           </div>
@@ -74,7 +80,7 @@ const isNewRecord = (): boolean => {
 
         <div
           v-if="isNewRecord()"
-          class="mb-6 p-3 bg-gradient-to-r from-yellow-100 to-amber-100 border border-amber-300 rounded-xl text-center"
+          class="mb-6 p-3 bg-linear-to-r from-yellow-100 to-amber-100 border border-amber-300 rounded-xl text-center"
         >
           <p class="text-amber-700 font-semibold">
             ⭐ ¡Nuevo récord personal!

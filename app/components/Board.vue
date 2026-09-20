@@ -3,9 +3,11 @@ import type { CardItem } from '~/composables/useMemoryGame'
 
 interface Props {
   cardList: CardItem[]
+  gameId: number
+  mismatchPositions: number[]
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
   (e: 'flip-card', payload: { position: number; faceValue: string }): void
@@ -14,6 +16,8 @@ const emit = defineEmits<{
 const onSelectCard = (payload: { position: number; faceValue: string }): void => {
   emit('flip-card', payload)
 }
+
+const ENTER_STAGGER_MS = 35
 </script>
 
 <template>
@@ -23,11 +27,13 @@ const onSelectCard = (payload: { position: number; faceValue: string }): void =>
   >
     <GameCard
       v-for="card in cardList"
-      :key="`${card.value}-${card.variant}`"
+      :key="`${gameId}-${card.value}-${card.variant}`"
       :value="card.value"
       :visible="card.visible"
       :matched="card.matched"
       :position="card.position"
+      :shake="props.mismatchPositions.includes(card.position)"
+      :enter-delay="card.position * ENTER_STAGGER_MS"
       @select-card="onSelectCard"
     />
   </section>

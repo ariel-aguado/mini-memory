@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, useTemplateRef, onMounted } from 'vue'
 import cardsData from '~/assets/data/cards.json'
 import type { CardSeed } from '~/composables/useMemoryGame'
 import { launchConfetti } from '~/utils/confetti'
@@ -13,7 +13,9 @@ const pares = computed<CardSeed[]>(() => temas[temaActivo.value].pares)
 
 const {
   cardList,
+  gameId,
   moves,
+  mismatchPositions,
   matchesFound,
   totalPairs,
   isWin,
@@ -26,6 +28,7 @@ const seconds = ref(0)
 const timerRunning = ref(false)
 const bestScore = ref<number | null>(null)
 const modalOpen = ref(false)
+const timerRef = useTemplateRef('timer')
 const STORAGE_KEY = 'mini-memory:best-score'
 
 onMounted(() => {
@@ -67,6 +70,7 @@ const handlePlayAgain = (): void => {
   restart()
   seconds.value = 0
   timerRunning.value = false
+  timerRef.value?.reset()
 }
 
 const handleTemaChange = (key: TemaKey): void => {
@@ -75,6 +79,7 @@ const handleTemaChange = (key: TemaKey): void => {
   seconds.value = 0
   timerRunning.value = false
   modalOpen.value = false
+  timerRef.value?.reset()
 }
 
 const nombreTema = computed(() => temas[temaActivo.value].nombre)
@@ -82,9 +87,9 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
 
 <template>
   <div class="min-h-screen flex flex-col items-center px-4 py-8 sm:py-12">
-    <header class="text-center mb-8 max-w-2xl">
-      <h1 class="text-4xl sm:text-5xl font-bold text-brand-700 mb-2">
-        🧩 Mini Memory
+    <header class="text-center mb-8 max-w-2xl animate-fade-in">
+      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-brand-700 mb-2">
+        <span class="inline-block animate-bounce">🧩</span> Mini Memory
       </h1>
       <p class="text-brand-500 text-sm sm:text-base">
         Construye tu primera web con piezas de Lego · Encuentra todos los pares
@@ -97,10 +102,10 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
         :key="key"
         type="button"
         :class="[
-          'px-4 py-2 rounded-xl font-semibold transition-all text-sm sm:text-base',
+          'px-4 py-2 rounded-xl font-display font-semibold transition-all duration-200 text-sm sm:text-base',
           temaActivo === key
-            ? 'bg-brand-600 text-white shadow-md'
-            : 'bg-white text-brand-600 border border-brand-200 hover:border-brand-400'
+            ? 'bg-brand-600 text-white shadow-md scale-105'
+            : 'bg-white text-brand-600 border border-brand-200 hover:border-brand-400 hover:-translate-y-0.5 hover:shadow-sm'
         ]"
         @click="handleTemaChange(key)"
       >
@@ -115,10 +120,26 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
         :total-pairs="totalPairs"
         :is-win="isWin"
       />
-      <Timer :running="timerRunning" @tick="handleTick" />
+      <Timer ref="timer" :running="timerRunning" @tick="handleTick" />
     </div>
 
-    <Board :card-list="cardList" @flip-card="handleFlipCard" />
+    <Transition
+      mode="out-in"
+      enter-active-class="transition-all duration-300 ease-out"
+      enter-from-class="opacity-0 scale-95"
+      enter-to-class="opacity-100 scale-100"
+      leave-active-class="transition-all duration-150 ease-in"
+      leave-from-class="opacity-100 scale-100"
+      leave-to-class="opacity-0 scale-95"
+    >
+      <Board
+        :key="temaActivo"
+        :card-list="cardList"
+        :game-id="gameId"
+        :mismatch-positions="mismatchPositions"
+        @flip-card="handleFlipCard"
+      />
+    </Transition>
 
     <div class="mt-6 flex gap-3">
       <button type="button" class="btn-primary" @click="handlePlayAgain">

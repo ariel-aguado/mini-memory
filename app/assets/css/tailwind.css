@@ -13,19 +13,14 @@
   --color-brand-900: #4c1d95;
 
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Fredoka', ui-rounded, system-ui, sans-serif;
 
-  --animate-flip-in: flip-in 0.5s ease-in-out;
   --animate-fade-in: fade-in 0.3s ease-out;
   --animate-pop: pop 0.3s ease-out;
-
-  @keyframes flip-in {
-    0% {
-      transform: rotateY(0deg);
-    }
-    100% {
-      transform: rotateY(180deg);
-    }
-  }
+  --animate-card-enter: card-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  --animate-shake: shake 0.4s ease-in-out;
+  --animate-blob-float: blob-float 14s ease-in-out infinite;
+  --animate-gradient-pan: gradient-pan 12s ease-in-out infinite;
 
   @keyframes fade-in {
     0% {
@@ -43,45 +38,124 @@
       transform: scale(0.8);
     }
     50% {
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
     100% {
       transform: scale(1);
+    }
+  }
+
+  @keyframes card-enter {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) rotate(-8deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    20%, 60% {
+      transform: translateX(-6px);
+    }
+    40%, 80% {
+      transform: translateX(6px);
+    }
+  }
+
+  @keyframes blob-float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(4%, 6%) scale(1.08);
+    }
+    66% {
+      transform: translate(-3%, -4%) scale(0.95);
+    }
+  }
+
+  @keyframes gradient-pan {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
     }
   }
 }
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply min-h-screen bg-linear-to-br from-brand-50 via-purple-50 to-pink-50;
+    @apply min-h-screen text-brand-900 bg-linear-to-br from-brand-50 via-purple-50 to-pink-50
+           bg-[length:200%_200%] animate-gradient-pan overflow-x-hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl
+    @apply px-6 py-3 bg-brand-600 text-white font-display font-semibold rounded-xl
            shadow-lg shadow-brand-500/30 hover:bg-brand-700
            transition-all duration-200 hover:scale-105 active:scale-95;
   }
 
-  .card-base {
-    @apply relative aspect-square w-full cursor-pointer
-           rounded-xl border-2 border-brand-300 bg-white
-           shadow-md transition-all duration-300
-           hover:shadow-lg hover:-translate-y-0.5;
+  .bg-blob {
+    @apply pointer-events-none absolute rounded-full blur-3xl opacity-50 animate-blob-float;
   }
 
-  .card-flipped {
+  /* Card flip: outer scene provides perspective, inner face rotates on the Y axis */
+  .card-scene {
+    @apply relative aspect-square w-full cursor-pointer;
+    perspective: 1000px;
+  }
+
+  .card-flip {
+    @apply relative h-full w-full transition-transform duration-500 ease-out;
+    transform-style: preserve-3d;
+  }
+
+  .card-flip.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    @apply absolute inset-0 flex items-center justify-center rounded-xl border-2
+           shadow-md transition-shadow duration-300;
+    backface-visibility: hidden;
+  }
+
+  .card-face-front {
+    @apply border-brand-300 bg-white hover:shadow-lg hover:border-brand-400;
+  }
+
+  .card-face-back {
     @apply border-brand-500 bg-brand-50;
+    transform: rotateY(180deg);
   }
 
-  .card-matched {
-    @apply border-green-400 bg-green-50 cursor-default;
+  .card-face-back.is-matched {
+    @apply border-green-400 bg-green-50;
   }
 }

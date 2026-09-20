@@ -4,9 +4,14 @@ interface Props {
   visible: boolean
   matched: boolean
   position: number
+  shake?: boolean
+  enterDelay?: number
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  shake: false,
+  enterDelay: 0,
+})
 
 const emit = defineEmits<{
   (e: 'select-card', payload: { position: number; faceValue: string }): void
@@ -19,40 +24,41 @@ const handleClick = (): void => {
 </script>
 
 <template>
-  <button
-    type="button"
-    :class="[
-      'card-base group',
-      visible && 'card-flipped',
-      matched && 'card-matched animate-pop',
-    ]"
-    :disabled="matched"
-    :aria-label="`Carta ${position + 1}`"
-    @click="handleClick"
+  <div
+    class="card-scene animate-card-enter"
+    :class="shake && 'animate-shake'"
+    :style="{ animationDelay: `${enterDelay}ms` }"
   >
-    <div class="absolute inset-0 flex items-center justify-center">
-      <span
-        v-if="!visible && !matched"
-        class="text-3xl sm:text-4xl text-brand-400 transition-transform group-hover:scale-110"
-        aria-hidden="true"
-      >
-        ?
-      </span>
-      <span
-        v-else
-        class="text-4xl sm:text-5xl select-none"
-        :class="matched ? 'animate-flip-in' : ''"
-      >
-        {{ value }}
-      </span>
-    </div>
-
-    <span
-      v-if="matched"
-      class="absolute top-1 right-1 text-green-500 text-lg"
-      aria-hidden="true"
+    <button
+      type="button"
+      class="card-flip group"
+      :class="(visible || matched) && 'is-flipped'"
+      :disabled="matched"
+      :aria-label="`Carta ${position + 1}`"
+      :aria-pressed="visible || matched"
+      @click="handleClick"
     >
-      ✓
-    </span>
-  </button>
+      <div class="card-face card-face-front">
+        <span
+          class="text-3xl sm:text-4xl text-brand-400 transition-transform group-hover:scale-110"
+          aria-hidden="true"
+        >
+          ?
+        </span>
+      </div>
+
+      <div class="card-face card-face-back" :class="matched && 'is-matched'">
+        <span class="text-4xl sm:text-5xl select-none" :class="matched && 'animate-pop'">
+          {{ value }}
+        </span>
+        <span
+          v-if="matched"
+          class="absolute top-1 right-1 text-green-500 text-lg"
+          aria-hidden="true"
+        >
+          ✓
+        </span>
+      </div>
+    </button>
+  </div>
 </template>

@@ -15,7 +15,9 @@ export interface CardSeed {
 
 export interface MemoryGameApi {
   cardList: Ref<CardItem[]>
+  gameId: Ref<number>
   moves: Ref<number>
+  mismatchPositions: Ref<number[]>
   matchesFound: import('vue').ComputedRef<number>
   totalPairs: import('vue').ComputedRef<number>
   isWin: import('vue').ComputedRef<boolean>
@@ -50,8 +52,10 @@ export const useMemoryGame = (
 
   const initialPares = paresGetter()
   const cardList = ref<CardItem[]>(buildDeck(initialPares))
+  const gameId = ref(0)
   const moves = ref(0)
   const selection = ref<{ position: number; faceValue: string }[]>([])
+  const mismatchPositions = ref<number[]>([])
   const canFlip = ref(true)
   const winCallbacks: (() => void)[] = []
 
@@ -96,10 +100,12 @@ export const useMemoryGame = (
         selection.value = []
         canFlip.value = true
       } else {
+        mismatchPositions.value = [a.position, b.position]
         setTimeout(() => {
           cardList.value[a.position]!.visible = false
           cardList.value[b.position]!.visible = false
           selection.value = []
+          mismatchPositions.value = []
           canFlip.value = true
         }, 1000)
       }
@@ -115,8 +121,10 @@ export const useMemoryGame = (
 
   const restart = (): void => {
     cardList.value = buildDeck(paresGetter())
+    gameId.value += 1
     moves.value = 0
     selection.value = []
+    mismatchPositions.value = []
     canFlip.value = true
   }
 
@@ -126,7 +134,9 @@ export const useMemoryGame = (
 
   return {
     cardList,
+    gameId,
     moves,
+    mismatchPositions,
     matchesFound,
     totalPairs,
     isWin,

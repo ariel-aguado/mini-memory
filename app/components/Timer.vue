@@ -59,7 +59,7 @@ defineExpose({ seconds, reset: () => { seconds.value = 0; emit('tick', 0) } })
     class="flex flex-col items-center px-4 py-3 bg-white/60 backdrop-blur rounded-2xl shadow-sm border border-brand-100"
   >
     <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">Tiempo</span>
-    <span class="text-2xl sm:text-3xl font-bold text-brand-700 tabular-nums">
+    <span class="text-2xl sm:text-3xl font-display font-semibold text-brand-700 tabular-nums">
       {{ formatted() }}
     </span>
   </div>
