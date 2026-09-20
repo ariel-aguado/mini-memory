@@ -29,7 +29,7 @@ const shuffle = <T>(array: T[]): T[] => {
   const copy = [...array]
   for (let i = copy.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[copy[i], copy[j]] = [copy[j], copy[i]]
+    ;[copy[i], copy[j]] = [copy[j]!, copy[i]!]
   }
   return copy
 }
@@ -88,16 +88,17 @@ export const useMemoryGame = (
       moves.value += 1
 
       const [a, b] = current
+      if (!a || !b) return
 
       if (a.faceValue === b.faceValue) {
-        cardList.value[a.position].matched = true
-        cardList.value[b.position].matched = true
+        cardList.value[a.position]!.matched = true
+        cardList.value[b.position]!.matched = true
         selection.value = []
         canFlip.value = true
       } else {
         setTimeout(() => {
-          cardList.value[a.position].visible = false
-          cardList.value[b.position].visible = false
+          cardList.value[a.position]!.visible = false
+          cardList.value[b.position]!.visible = false
           selection.value = []
           canFlip.value = true
         }, 1000)

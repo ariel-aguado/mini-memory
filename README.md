@@ -1,6 +1,6 @@
 # 🧩 Mini Memory
 
-Juego de memoria (Memory Game) construido con **Nuxt 3 + Vue 3 + TailwindCSS**.
+Juego de memoria (Memory Game) construido con **Nuxt 4 + Vue 3 + TailwindCSS v4**.
 
 Es el **prototipo base** del curso *"Construye tu primera web con piezas de Lego"*. Sirve para mostrar a los alumnos un proyecto terminado que luego personalizan y extienden sesión a sesión.
 
@@ -33,24 +33,24 @@ El proyecto está dividido en **piezas de Lego**. Cada una hace una sola cosa:
 
 ```
 mini-memory/
-├── app.vue                          ← Layout raíz (envuelve NuxtPage)
-├── pages/
-│   └── index.vue                    ← 🎮 Orquesta todas las piezas
-├── components/
-│   ├── GameCard.vue                 ← 🧩 Pieza 1: la carta individual
-│   ├── Board.vue                    ← 🧩 Pieza 2: el tablero 4×3
-│   ├── ScoreBoard.vue               ← 🧩 Pieza 3: marcador + estado
-│   ├── Timer.vue                    ← 🧩 Pieza 4: cronómetro mm:ss
-│   └── ResultsModal.vue             ← 🧩 Pieza 5: modal de victoria
-├── composables/
-│   └── useMemoryGame.ts             ← ⚙️ Lógica del juego (estado, match, victoria)
-├── utils/
-│   └── confetti.ts                  ← 🎊 Lanzador de confetti
-├── assets/
-│   ├── css/tailwind.css             ← 🎨 Estilos base + componentes
-│   └── data/cards.json              ← 🃏 4 temáticas de cartas
+├── app/                              ← 📁 srcDir de Nuxt 4 (código de cliente)
+│   ├── app.vue                       ← Layout raíz (envuelve NuxtPage)
+│   ├── pages/
+│   │   └── index.vue                 ← 🎮 Orquesta todas las piezas
+│   ├── components/
+│   │   ├── GameCard.vue              ← 🧩 Pieza 1: la carta individual
+│   │   ├── Board.vue                 ← 🧩 Pieza 2: el tablero 4×3
+│   │   ├── ScoreBoard.vue            ← 🧩 Pieza 3: marcador + estado
+│   │   ├── Timer.vue                 ← 🧩 Pieza 4: cronómetro mm:ss
+│   │   └── ResultsModal.vue          ← 🧩 Pieza 5: modal de victoria
+│   ├── composables/
+│   │   └── useMemoryGame.ts          ← ⚙️ Lógica del juego (estado, match, victoria)
+│   ├── utils/
+│   │   └── confetti.ts               ← 🎊 Lanzador de confetti
+│   └── assets/
+│       ├── css/tailwind.css          ← 🎨 Estilos base + componentes + tema (Tailwind v4)
+│       └── data/cards.json           ← 🃏 4 temáticas de cartas
 ├── nuxt.config.ts
-├── tailwind.config.js
 └── tsconfig.json
 ```
 
@@ -104,7 +104,7 @@ Este prototipo es **la base**. Los alumnos lo personalizarán y extenderán:
 ## 🙏 Créditos
 
 - **Inspirado en** [peek-a-vue](https://github.com/bencodezen/peek-a-vue) de Ben Hong (Vue.js core team).
-- Stack: Nuxt 3 + Vue 3 (Composition API + `<script setup>`) + TailwindCSS + TypeScript + canvas-confetti.
+- Stack: Nuxt 4 + Vue 3 (Composition API + `<script setup>`) + TailwindCSS v4 + TypeScript + canvas-confetti.
 - Metodología pedagógica: "aprender construyendo, pieza a pieza".
 
 ---

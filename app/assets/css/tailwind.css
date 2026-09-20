@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --animate-flip-in: flip-in 0.5s ease-in-out;
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-pop: pop 0.3s ease-out;
+
+  @keyframes flip-in {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(180deg);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pop {
+    0% {
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply min-h-screen bg-linear-to-br from-brand-50 via-purple-50 to-pink-50;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl
+           shadow-lg shadow-brand-500/30 hover:bg-brand-700
+           transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+
+  .card-base {
+    @apply relative aspect-square w-full cursor-pointer
+           rounded-xl border-2 border-brand-300 bg-white
+           shadow-md transition-all duration-300
+           hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .card-flipped {
+    @apply border-brand-500 bg-brand-50;
+  }
+
+  .card-matched {
+    @apply border-green-400 bg-green-50 cursor-default;
+  }
+}

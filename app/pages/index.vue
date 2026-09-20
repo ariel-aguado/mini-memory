@@ -8,7 +8,7 @@ const temas = cardsData.temas
 const nombresTemas = Object.keys(temas) as Array<keyof typeof temas>
 type TemaKey = (typeof nombresTemas)[number]
 
-const temaActivo = ref<TemaKey>(nombresTemas[0])
+const temaActivo = ref<TemaKey>(nombresTemas[0]!)
 const pares = computed<CardSeed[]>(() => temas[temaActivo.value].pares)
 
 const {
@@ -137,7 +137,7 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
         >
           peek-a-vue
         </a>
-        · Construido con Nuxt 3 + Vue 3 + TailwindCSS
+        · Construido con Nuxt 4 + Vue 3 + TailwindCSS
       </p>
     </footer>
 
