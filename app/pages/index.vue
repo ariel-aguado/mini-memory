@@ -87,46 +87,46 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
 
 <template>
   <div class="min-h-screen flex flex-col items-center px-4 py-4 sm:py-6">
-    <!-- Barra compacta: marca + selector de tema -->
-    <div class="w-full max-w-3xl sm:max-w-4xl flex flex-wrap items-center justify-between gap-2 sm:gap-3 animate-fade-in">
-      <h1 class="font-display text-base sm:text-lg font-semibold text-brand-600 flex items-center gap-1.5 shrink-0">
-        <span class="text-lg sm:text-xl">🧩</span> Mini Memory
+    <!-- Encabezado centrado: marca + selector de tema -->
+    <div class="w-full max-w-3xl sm:max-w-4xl flex flex-col items-center gap-3 sm:gap-4 animate-fade-in">
+      <h1 class="font-display text-lg sm:text-xl font-semibold text-brand-600 flex items-center gap-1.5">
+        <span class="text-xl sm:text-2xl">🧩</span> Mini Memory
       </h1>
 
-      <div class="flex flex-wrap items-center gap-1.5" aria-label="Selector de tema">
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label="Selector de tema">
         <button
           v-for="key in nombresTemas"
           :key="key"
           type="button"
           :class="[
-            'px-2.5 py-1 rounded-lg font-medium transition-all duration-200 text-[11px] sm:text-xs',
+            'px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl font-display font-semibold transition-all duration-200 text-sm sm:text-base',
             temaActivo === key
-              ? 'bg-brand-600 text-white shadow-sm'
-              : 'bg-white/70 text-brand-500 border border-brand-200/70 hover:border-brand-400'
+              ? 'bg-brand-600 text-white shadow-md scale-105'
+              : 'bg-white/80 text-brand-600 border border-brand-200 hover:border-brand-400 hover:-translate-y-0.5 hover:shadow-sm'
           ]"
           @click="handleTemaChange(key)"
         >
           {{ temas[key].nombre }}
         </button>
       </div>
-    </div>
 
-    <!-- Franja secundaria: puntuación, tiempo y reinicio -->
-    <div class="w-full max-w-3xl sm:max-w-4xl mt-2 sm:mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
-      <ScoreBoard
-        :moves="moves"
-        :matches-found="matchesFound"
-        :total-pairs="totalPairs"
-        :is-win="isWin"
-      />
-      <Timer ref="timer" :running="timerRunning" @tick="handleTick" />
-      <button
-        type="button"
-        class="text-[11px] sm:text-xs font-medium text-brand-500 bg-brand-50 hover:bg-brand-100 px-2.5 py-1 rounded-lg transition-colors"
-        @click="handlePlayAgain"
-      >
-        🔄 Reiniciar
-      </button>
+      <!-- Estado de la partida y reinicio -->
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+        <ScoreBoard
+          :moves="moves"
+          :matches-found="matchesFound"
+          :total-pairs="totalPairs"
+          :is-win="isWin"
+        />
+        <Timer ref="timer" :running="timerRunning" @tick="handleTick" />
+        <button
+          type="button"
+          class="text-sm sm:text-base font-display font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-xl transition-colors"
+          @click="handlePlayAgain"
+        >
+          🔄 Reiniciar
+        </button>
+      </div>
     </div>
 
     <!-- El tablero es el protagonista -->

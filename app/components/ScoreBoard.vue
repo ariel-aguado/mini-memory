@@ -16,19 +16,19 @@ const progress = computed(() =>
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-1">
-    <div class="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.5 text-[11px] sm:text-xs text-brand-400">
-      <span>🎯 <b class="font-semibold text-brand-500">{{ moves }}</b> mov.</span>
-      <span class="text-brand-200" aria-hidden="true">·</span>
-      <span>🧩 <b class="font-semibold text-brand-500">{{ matchesFound }}/{{ totalPairs }}</b> pares</span>
+  <div class="flex flex-col items-center gap-1.5">
+    <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm sm:text-base text-brand-500">
+      <span>🎯 <b class="font-semibold text-brand-600">{{ moves }}</b> mov.</span>
+      <span class="text-brand-300" aria-hidden="true">·</span>
+      <span>🧩 <b class="font-semibold text-brand-600">{{ matchesFound }}/{{ totalPairs }}</b> pares</span>
       <template v-if="isWin">
-        <span class="text-brand-200" aria-hidden="true">·</span>
+        <span class="text-brand-300" aria-hidden="true">·</span>
         <span class="font-semibold text-green-600">🏆 ¡Victoria!</span>
       </template>
     </div>
 
     <div
-      class="h-1 w-32 sm:w-40 rounded-full bg-brand-100 overflow-hidden"
+      class="h-1.5 sm:h-2 w-40 sm:w-52 rounded-full bg-brand-100 overflow-hidden"
       role="progressbar"
       :aria-valuenow="progress"
       aria-valuemin="0"

@@ -8,7 +8,9 @@
         { "id": "leon", "valor": "🦁" },
         { "id": "panda", "valor": "🐼" },
         { "id": "zorro", "valor": "🦊" },
-        { "id": "pajaro", "valor": "🐦" }
+        { "id": "pajaro", "valor": "🐦" },
+        { "id": "rana", "valor": "🐸" },
+        { "id": "tortuga", "valor": "🐢" }
       ]
     },
     "frutas": {
@@ -19,7 +21,9 @@
         { "id": "uva", "valor": "🍇" },
         { "id": "fresa", "valor": "🍓" },
         { "id": "naranja", "valor": "🍊" },
-        { "id": "sandia", "valor": "🍉" }
+        { "id": "sandia", "valor": "🍉" },
+        { "id": "durazno", "valor": "🍑" },
+        { "id": "kiwi", "valor": "🥝" }
       ]
     },
     "emojis": {
@@ -30,7 +34,9 @@
         { "id": "fuego", "valor": "🔥" },
         { "id": "estrella", "valor": "⭐" },
         { "id": "corazon", "valor": "❤️" },
-        { "id": "cohete", "valor": "🚀" }
+        { "id": "cohete", "valor": "🚀" },
+        { "id": "fiesta", "valor": "🎉" },
+        { "id": "arcoiris", "valor": "🌈" }
       ]
     },
     "simbolos": {
@@ -41,7 +47,9 @@
         { "id": "musica", "valor": "🎵" },
         { "id": "luz", "valor": "💡" },
         { "id": "magic", "valor": "✨" },
-        { "id": "gamepad", "valor": "🎮" }
+        { "id": "gamepad", "valor": "🎮" },
+        { "id": "laptop", "valor": "💻" },
+        { "id": "herramienta", "valor": "🔧" }
       ]
     }
   }
