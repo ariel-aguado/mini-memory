@@ -151,18 +151,7 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
     </div>
 
     <footer class="text-center text-[10px] sm:text-xs text-brand-300">
-      <p>
-        Inspirado en
-        <a
-          href="https://github.com/bencodezen/peek-a-vue"
-          target="_blank"
-          rel="noopener"
-          class="underline hover:text-brand-500"
-        >
-          peek-a-vue
-        </a>
-        · Construido con Nuxt 4 + Vue 3 + TailwindCSS
-      </p>
+      <p>Construido con Nuxt 4 + Vue 3 + TailwindCSS</p>
     </footer>
 
     <ResultsModal
