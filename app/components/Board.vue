@@ -22,7 +22,7 @@ const ENTER_STAGGER_MS = 35
 
 <template>
   <section
-    class="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto p-4 sm:p-6"
+    class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-5 md:gap-6 w-full max-w-3xl sm:max-w-4xl mx-auto p-4 sm:p-6"
     aria-label="Tablero de juego"
   >
     <GameCard

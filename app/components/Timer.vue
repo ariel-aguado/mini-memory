@@ -55,12 +55,7 @@ defineExpose({ seconds, reset: () => { seconds.value = 0; emit('tick', 0) } })
 </script>
 
 <template>
-  <div
-    class="flex flex-col items-center px-4 py-3 bg-white/60 backdrop-blur rounded-2xl shadow-sm border border-brand-100"
-  >
-    <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">Tiempo</span>
-    <span class="text-2xl sm:text-3xl font-display font-semibold text-brand-700 tabular-nums">
-      {{ formatted() }}
-    </span>
-  </div>
+  <span class="inline-flex items-center gap-1 text-[11px] sm:text-xs text-brand-400">
+    ⏱ <b class="font-semibold text-brand-500 tabular-nums">{{ formatted() }}</b>
+  </span>
 </template>

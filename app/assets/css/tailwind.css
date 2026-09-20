@@ -141,13 +141,13 @@
   }
 
   .card-face {
-    @apply absolute inset-0 flex items-center justify-center rounded-xl border-2
-           shadow-md transition-shadow duration-300;
+    @apply absolute inset-0 flex items-center justify-center rounded-2xl border-2 sm:border-[3px]
+           shadow-lg transition-shadow duration-300;
     backface-visibility: hidden;
   }
 
   .card-face-front {
-    @apply border-brand-300 bg-white hover:shadow-lg hover:border-brand-400;
+    @apply border-brand-300 bg-white hover:shadow-xl hover:border-brand-400;
   }
 
   .card-face-back {
