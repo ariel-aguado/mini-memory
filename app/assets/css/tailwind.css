@@ -118,7 +118,8 @@
   .btn-primary {
     @apply px-6 py-3 bg-brand-600 text-white font-display font-semibold rounded-xl
            shadow-lg shadow-brand-500/30 hover:bg-brand-700
-           transition-all duration-200 hover:scale-105 active:scale-95;
+           transition-all duration-200 hover:scale-105 active:scale-95
+           outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2;
   }
 
   .bg-blob {
@@ -149,7 +150,7 @@
   }
 
   .card-flip {
-    @apply relative h-full w-full transition-transform duration-500 ease-out;
+    @apply relative h-full w-full transition-transform duration-500 ease-out outline-none;
     transform-style: preserve-3d;
   }
 
@@ -161,6 +162,14 @@
     @apply absolute inset-0 flex items-center justify-center rounded-xl sm:rounded-2xl border-2
            shadow-lg transition-shadow duration-300;
     backface-visibility: hidden;
+  }
+
+  /* The button itself rotates in 3D, so a native outline on it can render
+     skewed mid-flip. Draw the focus ring on the non-rotated faces instead,
+     driven by :focus-visible on the button via :has(). */
+  .card-scene:has(.card-flip:focus-visible) .card-face {
+    outline: 3px solid var(--color-brand-600);
+    outline-offset: 3px;
   }
 
   .card-face-front {

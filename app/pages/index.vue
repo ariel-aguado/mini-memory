@@ -100,6 +100,7 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
           type="button"
           :class="[
             'px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl font-display font-semibold transition-all duration-200 text-sm sm:text-base',
+            'outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
             temaActivo === key
               ? 'bg-brand-600 text-white shadow-md scale-105'
               : 'bg-white/80 text-brand-600 border border-brand-200 hover:border-brand-400 hover:-translate-y-0.5 hover:shadow-sm'
@@ -121,7 +122,7 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
         <Timer ref="timer" :running="timerRunning" @tick="handleTick" />
         <button
           type="button"
-          class="text-sm sm:text-base font-display font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-xl transition-colors"
+          class="text-sm sm:text-base font-display font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-xl transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           @click="handlePlayAgain"
         >
           🔄 Reiniciar

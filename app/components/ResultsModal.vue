@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { watch, nextTick, useTemplateRef } from 'vue'
+
 interface Props {
   open: boolean
   moves: number
@@ -23,6 +25,17 @@ const formatTime = (s: number): string => {
 const isNewRecord = (): boolean => {
   return props.bestScore !== null && props.seconds < props.bestScore
 }
+
+const playAgainButton = useTemplateRef('play-again-button')
+
+watch(
+  () => props.open,
+  async (open) => {
+    if (!open) return
+    await nextTick()
+    playAgainButton.value?.focus()
+  }
+)
 </script>
 
 <template>
@@ -41,6 +54,7 @@ const isNewRecord = (): boolean => {
       aria-modal="true"
       aria-labelledby="results-title"
       @click.self="emit('close')"
+      @keydown.esc="emit('close')"
     >
       <div
         class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full animate-pop"
@@ -93,6 +107,7 @@ const isNewRecord = (): boolean => {
         </div>
 
         <button
+          ref="play-again-button"
           type="button"
           class="btn-primary w-full text-lg"
           @click="emit('play-again')"
