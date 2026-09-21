@@ -1,14 +1,13 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 6 — kit de inicio: Marcador y feedback
+## Clase 6 — solución: Marcador y feedback
 
-Tu tarea: completar los `TODO` en `components/ScoreBoard.vue` (2) y
-`components/Timer.vue` (2). `pages/index.vue` ya está conectado — no
-hace falta tocarlo.
+`ScoreBoard.vue` y `Timer.vue` completos. El juego ya muestra movimientos,
+pares encontrados, estado y tiempo transcurrido en vivo.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Comparalo con `curso/clase-6-solucion`.
+Siguiente paso: `curso/clase-7-inicio` (el modal de victoria y el confetti).

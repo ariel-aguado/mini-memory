@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// 🧩 Clase 6 — v-if / v-else con props
 interface Props {
   moves: number
   matchesFound: number
@@ -7,8 +6,7 @@ interface Props {
   isWin: boolean
 }
 
-// TODO 1: declará las props con defineProps<Props>()
-
+defineProps<Props>()
 </script>
 
 <template>
@@ -33,12 +31,8 @@ interface Props {
 
     <div class="flex flex-col items-center min-w-[80px]">
       <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">Estado</span>
-      <!--
-        TODO 2: mostrá "🏆 ¡Victoria!" (en verde, clase text-green-600)
-        si isWin es true, o "🎯 Jugando" si no.
-        Pista: <span v-if="isWin" class="...">🏆 ¡Victoria!</span>
-               <span v-else class="...">🎯 Jugando</span>
-      -->
+      <span v-if="isWin" class="text-lg sm:text-xl font-bold text-green-600">🏆 ¡Victoria!</span>
+      <span v-else class="text-lg sm:text-xl font-bold text-brand-700">🎯 Jugando</span>
     </div>
   </div>
 </template>

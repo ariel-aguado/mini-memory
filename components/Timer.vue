@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// 🧩 Clase 6 — watch, setInterval y ciclo de vida
 import { ref, watch, onUnmounted } from 'vue'
 
 interface Props {
@@ -28,19 +27,25 @@ const stop = (): void => {
   }
 }
 
-// TODO 1: completá `start`. Si ya hay un intervalId, no hagas nada
-// (para no arrancar dos relojes a la vez). Si no, creá un setInterval
-// que cada 1000ms sume 1 a `seconds.value` y emita 'tick' con el
-// nuevo valor.
 const start = (): void => {
-  // tu código acá
+  if (intervalId !== null) return
+  intervalId = setInterval(() => {
+    seconds.value += 1
+    emit('tick', seconds.value)
+  }, 1000)
 }
 
-// TODO 2: usá `watch` para mirar `props.running`. Cuando pase a true,
-// llamá a start(); cuando pase a false, llamá a stop(). Agregá
-// { immediate: true } para que también corra apenas se monta.
-// Pista: watch(() => props.running, (running) => { ... }, { immediate: true })
-
+watch(
+  () => props.running,
+  (running) => {
+    if (running) {
+      start()
+    } else {
+      stop()
+    }
+  },
+  { immediate: true }
+)
 
 onUnmounted(() => {
   stop()
