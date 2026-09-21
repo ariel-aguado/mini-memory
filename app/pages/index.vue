@@ -93,7 +93,10 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
         <span class="text-xl sm:text-2xl">🧩</span> Mini Memory
       </h1>
 
-      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label="Selector de tema">
+      <div
+        class="grid grid-cols-2 gap-2 w-full max-w-xs sm:flex sm:flex-wrap sm:w-auto sm:max-w-none sm:gap-3"
+        aria-label="Selector de tema"
+      >
         <button
           v-for="key in nombresTemas"
           :key="key"
@@ -112,21 +115,23 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
       </div>
 
       <!-- Estado de la partida y reinicio -->
-      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-x-5">
         <ScoreBoard
           :moves="moves"
           :matches-found="matchesFound"
           :total-pairs="totalPairs"
           :is-win="isWin"
         />
-        <Timer ref="timer" :running="timerRunning" @tick="handleTick" />
-        <button
-          type="button"
-          class="text-sm sm:text-base font-display font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-xl transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:text-brand-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-900"
-          @click="handlePlayAgain"
-        >
-          🔄 Reiniciar
-        </button>
+        <div class="flex items-center gap-3">
+          <Timer ref="timer" :running="timerRunning" @tick="handleTick" />
+          <button
+            type="button"
+            class="text-sm sm:text-base font-display font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-xl transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:text-brand-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-900"
+            @click="handlePlayAgain"
+          >
+            🔄 Reiniciar
+          </button>
+        </div>
       </div>
     </div>
 
