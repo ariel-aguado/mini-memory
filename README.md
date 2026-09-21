@@ -1,13 +1,15 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 6 — solución: Marcador y feedback
+## Clase 7 — kit de inicio: El festejo
 
-`ScoreBoard.vue` y `Timer.vue` completos. El juego ya muestra movimientos,
-pares encontrados, estado y tiempo transcurrido en vivo.
+Tu tarea: completar los `TODO` en `components/ResultsModal.vue` (3) y en
+`pages/index.vue` (2). `utils/confetti.ts` ya está resuelto.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Siguiente paso: `curso/clase-7-inicio` (el modal de victoria y el confetti).
+Al completar todos los pares debería aparecer un modal con confetti.
+
+Comparalo con `curso/clase-7-solucion`.
