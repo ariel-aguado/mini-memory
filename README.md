@@ -1,14 +1,15 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 2 — solución: Componentes, props y emits
+## Clase 3 — kit de inicio: Listas con v-for
 
-`components/GameCard.vue` completo: recibe `value`, `visible`, `matched` y
-`position` como props, y emite `select-card` al hacer click (salvo que la
-carta ya esté encontrada).
+Tu tarea: completar los 2 `TODO` en `components/Board.vue`.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Siguiente paso: `curso/clase-3-inicio` (el tablero con `v-for`).
+Vas a ver un mazo de prueba de 6 cartas (3 pares). Cuando `Board.vue` esté
+completo, deberían verse las 6 repetidas en grilla.
+
+Comparalo con `curso/clase-3-solucion`.
