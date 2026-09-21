@@ -30,6 +30,9 @@ const bestScore = ref<number | null>(null)
 const modalOpen = ref(false)
 const timerRef = useTemplateRef('timer')
 const STORAGE_KEY = 'mini-memory:best-score'
+// Matches .card-flip's 500ms transition (tailwind.css) plus a short grace
+// period, so the last card's flip finishes before the modal covers it.
+const WIN_REVEAL_DELAY_MS = 650
 
 onMounted(() => {
   if (typeof window === 'undefined') return
@@ -42,8 +45,6 @@ onMounted(() => {
 
 onWin(() => {
   timerRunning.value = false
-  launchConfetti()
-  modalOpen.value = true
 
   const previousBest = bestScore.value
   if (previousBest === null || seconds.value < previousBest) {
@@ -52,6 +53,14 @@ onWin(() => {
       window.localStorage.setItem(STORAGE_KEY, String(seconds.value))
     }
   }
+
+  const winGameId = gameId.value
+  setTimeout(() => {
+    // Bail if the player restarted or changed theme during the delay.
+    if (gameId.value !== winGameId) return
+    launchConfetti()
+    modalOpen.value = true
+  }, WIN_REVEAL_DELAY_MS)
 })
 
 const handleFlipCard = (payload: { position: number; faceValue: string }): void => {
