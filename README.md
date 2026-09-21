@@ -1,13 +1,14 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 5 — kit de inicio: Conectar todo
+## Clase 5 — solución: Conectar todo
 
-Tu tarea: completar los 3 `TODO` en `pages/index.vue`. Este es el momento
-más importante del curso — al terminar, ¡el juego es jugable de verdad!
+`pages/index.vue` conecta `useMemoryGame` con `Board`. El juego ya es
+jugable de punta a punta: se pueden voltear cartas y encontrar pares.
+Todavía sin marcador, cronómetro ni modal de victoria.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Comparalo con `curso/clase-5-solucion`.
+Siguiente paso: `curso/clase-6-inicio` (ScoreBoard y Timer).
