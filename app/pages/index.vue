@@ -89,7 +89,7 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
   <div class="min-h-screen flex flex-col items-center px-4 py-4 sm:py-6">
     <!-- Encabezado centrado: marca + selector de tema -->
     <div class="w-full max-w-3xl sm:max-w-4xl flex flex-col items-center gap-3 sm:gap-4 animate-fade-in">
-      <h1 class="font-display text-lg sm:text-xl font-semibold text-brand-600 flex items-center gap-1.5">
+      <h1 class="font-display text-lg sm:text-xl font-semibold text-brand-600 dark:text-brand-200 flex items-center gap-1.5">
         <span class="text-xl sm:text-2xl">🧩</span> Mini Memory
       </h1>
 
@@ -100,10 +100,10 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
           type="button"
           :class="[
             'px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl font-display font-semibold transition-all duration-200 text-sm sm:text-base',
-            'outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
+            'outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900',
             temaActivo === key
               ? 'bg-brand-600 text-white shadow-md scale-105'
-              : 'bg-white/80 text-brand-600 border border-brand-200 hover:border-brand-400 hover:-translate-y-0.5 hover:shadow-sm'
+              : 'bg-white/80 text-brand-600 border border-brand-200 hover:border-brand-400 hover:-translate-y-0.5 hover:shadow-sm dark:bg-slate-800/80 dark:text-brand-200 dark:border-slate-600 dark:hover:border-brand-400'
           ]"
           @click="handleTemaChange(key)"
         >
@@ -122,7 +122,7 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
         <Timer ref="timer" :running="timerRunning" @tick="handleTick" />
         <button
           type="button"
-          class="text-sm sm:text-base font-display font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-xl transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+          class="text-sm sm:text-base font-display font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-xl transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:text-brand-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-900"
           @click="handlePlayAgain"
         >
           🔄 Reiniciar
@@ -161,7 +161,7 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
       </ClientOnly>
     </div>
 
-    <footer class="text-center text-[10px] sm:text-xs text-brand-300">
+    <footer class="text-center text-[10px] sm:text-xs text-brand-300 dark:text-brand-500">
       <p>Construido con Nuxt 4 + Vue 3 + TailwindCSS</p>
     </footer>
 

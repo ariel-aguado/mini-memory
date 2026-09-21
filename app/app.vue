@@ -7,6 +7,10 @@
       <div class="bg-blob bottom-0 left-1/4 h-64 w-64 bg-amber-200" style="animation-delay: -9s" />
     </div>
 
+    <ClientOnly>
+      <ColorModeToggle class="fixed top-3 right-3 sm:top-4 sm:right-4 z-20" />
+    </ClientOnly>
+
     <NuxtPage />
   </div>
 </template>
