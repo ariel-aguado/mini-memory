@@ -1,16 +1,14 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 2 — kit de inicio: Componentes, props y emits
+## Clase 2 — solución: Componentes, props y emits
 
-Tu tarea: completar los 3 `TODO` en `components/GameCard.vue`.
+`components/GameCard.vue` completo: recibe `value`, `visible`, `matched` y
+`position` como props, y emite `select-card` al hacer click (salvo que la
+carta ya esté encontrada).
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abrí [http://localhost:3000](http://localhost:3000). Vas a ver la misma carta
-en sus 3 estados (boca abajo, boca arriba, encontrada) — así podés revisar tu
-trabajo sin necesitar el tablero completo todavía.
-
-Cuando funcione, comparalo con la rama `curso/clase-2-solucion`.
+Siguiente paso: `curso/clase-3-inicio` (el tablero con `v-for`).

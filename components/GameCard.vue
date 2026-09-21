@@ -1,34 +1,20 @@
 <script setup lang="ts">
-// 🧩 Clase 2 — Componentes, props y emits
-//
-// Esta carta necesita RECIBIR datos desde afuera (props) y AVISAR
-// hacia afuera cuando pasa algo (emits). Completá los 3 TODO.
+interface Props {
+  value: string
+  visible: boolean
+  matched: boolean
+  position: number
+}
 
-// TODO 1: declará las props que esta carta necesita:
-//   value    -> el texto/emoji de la carta (string)
-//   visible  -> si está boca arriba (boolean)
-//   matched  -> si ya fue encontrada (boolean)
-//   position -> su lugar en el tablero (number)
-//
-// Pista:
-//   interface Props { value: string; visible: boolean; matched: boolean; position: number }
-//   const props = defineProps<Props>()
+const props = defineProps<Props>()
 
+const emit = defineEmits<{
+  (e: 'select-card', payload: { position: number; faceValue: string }): void
+}>()
 
-// TODO 2: declará el evento que esta carta puede emitir al tocarla:
-//   'select-card', con un payload { position: number; faceValue: string }
-//
-// Pista:
-//   const emit = defineEmits<{
-//     (e: 'select-card', payload: { position: number; faceValue: string }): void
-//   }>()
-
-
-// TODO 3: completá la función que se ejecuta al hacer click.
-//   - Si la carta ya está encontrada (matched), no hacer nada.
-//   - Si no, emitir 'select-card' con la posición y el valor de la carta.
 const handleClick = (): void => {
-  // tu código acá
+  if (props.matched) return
+  emit('select-card', { position: props.position, faceValue: props.value })
 }
 </script>
 
