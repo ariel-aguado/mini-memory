@@ -1,14 +1,14 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 5 — solución: Conectar todo
+## Clase 6 — kit de inicio: Marcador y feedback
 
-`pages/index.vue` conecta `useMemoryGame` con `Board`. El juego ya es
-jugable de punta a punta: se pueden voltear cartas y encontrar pares.
-Todavía sin marcador, cronómetro ni modal de victoria.
+Tu tarea: completar los `TODO` en `components/ScoreBoard.vue` (2) y
+`components/Timer.vue` (2). `pages/index.vue` ya está conectado — no
+hace falta tocarlo.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Siguiente paso: `curso/clase-6-inicio` (ScoreBoard y Timer).
+Comparalo con `curso/clase-6-solucion`.

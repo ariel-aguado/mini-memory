@@ -1,0 +1,44 @@
+<script setup lang="ts">
+// 🧩 Clase 6 — v-if / v-else con props
+interface Props {
+  moves: number
+  matchesFound: number
+  totalPairs: number
+  isWin: boolean
+}
+
+// TODO 1: declará las props con defineProps<Props>()
+
+</script>
+
+<template>
+  <div
+    class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 px-4 py-3 bg-white/60 backdrop-blur rounded-2xl shadow-sm border border-brand-100"
+  >
+    <div class="flex flex-col items-center min-w-[80px]">
+      <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">Movimientos</span>
+      <span class="text-2xl sm:text-3xl font-bold text-brand-700 tabular-nums">{{ moves }}</span>
+    </div>
+
+    <div class="h-10 w-px bg-brand-200" aria-hidden="true" />
+
+    <div class="flex flex-col items-center min-w-[80px]">
+      <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">Pares</span>
+      <span class="text-2xl sm:text-3xl font-bold text-brand-700 tabular-nums">
+        {{ matchesFound }} / {{ totalPairs }}
+      </span>
+    </div>
+
+    <div class="h-10 w-px bg-brand-200" aria-hidden="true" />
+
+    <div class="flex flex-col items-center min-w-[80px]">
+      <span class="text-xs uppercase tracking-wider text-brand-500 font-semibold">Estado</span>
+      <!--
+        TODO 2: mostrá "🏆 ¡Victoria!" (en verde, clase text-green-600)
+        si isWin es true, o "🎯 Jugando" si no.
+        Pista: <span v-if="isWin" class="...">🏆 ¡Victoria!</span>
+               <span v-else class="...">🎯 Jugando</span>
+      -->
+    </div>
+  </div>
+</template>
