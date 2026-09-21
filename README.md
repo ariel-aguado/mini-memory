@@ -1,14 +1,13 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 4 — solución: El cerebro del juego
+## Clase 5 — kit de inicio: Conectar todo
 
-`composables/useMemoryGame.ts` completo: arma el mazo, voltea cartas,
-compara pares y sabe cuándo se ganó.
+Tu tarea: completar los 3 `TODO` en `pages/index.vue`. Este es el momento
+más importante del curso — al terminar, ¡el juego es jugable de verdad!
 
 ```bash
 npm install
 npm run dev
 ```
 
-Siguiente paso: `curso/clase-5-inicio` (conectar todo en `pages/index.vue`
-— el juego se vuelve jugable de verdad).
+Comparalo con `curso/clase-5-solucion`.
