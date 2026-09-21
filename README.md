@@ -1,15 +1,14 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 3 — kit de inicio: Listas con v-for
+## Clase 3 — solución: Listas con v-for
 
-Tu tarea: completar los 2 `TODO` en `components/Board.vue`.
+`components/Board.vue` completo: recibe `cardList` y repite un `GameCard`
+por cada elemento con `v-for`, relayando el evento `select-card` como
+`flip-card` hacia arriba.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Vas a ver un mazo de prueba de 6 cartas (3 pares). Cuando `Board.vue` esté
-completo, deberían verse las 6 repetidas en grilla.
-
-Comparalo con `curso/clase-3-solucion`.
+Siguiente paso: `curso/clase-4-inicio` (el composable `useMemoryGame.ts`).
