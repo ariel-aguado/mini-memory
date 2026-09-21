@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// 🧩 Clase 7 — Eventos personalizados (onWin) y localStorage
 import { ref, onMounted } from 'vue'
 import cardsData from '~/assets/data/cards.json'
 import { launchConfetti } from '~/utils/confetti'
@@ -13,21 +12,23 @@ const bestScore = ref<number | null>(null)
 const modalOpen = ref(false)
 const STORAGE_KEY = 'mini-memory:best-score'
 
-// TODO 1: en onMounted, leé la clave STORAGE_KEY de localStorage
-// (window.localStorage.getItem). Si hay un valor guardado, convertilo a
-// número (Number.parseInt(valor, 10)) y guardalo en bestScore.
 onMounted(() => {
-  // tu código acá
+  const stored = window.localStorage.getItem(STORAGE_KEY)
+  if (stored !== null) {
+    const parsed = Number.parseInt(stored, 10)
+    bestScore.value = Number.isFinite(parsed) ? parsed : null
+  }
 })
 
-// TODO 2: usá `onWin` para registrar qué pasa cuando se gana:
-//   - poné timerRunning en false
-//   - llamá a launchConfetti()
-//   - poné modalOpen en true
-//   - si bestScore es null, o seconds es menor que bestScore: actualizá
-//     bestScore y guardalo con window.localStorage.setItem(STORAGE_KEY, ...)
 onWin(() => {
-  // tu código acá
+  timerRunning.value = false
+  launchConfetti()
+  modalOpen.value = true
+
+  if (bestScore.value === null || seconds.value < bestScore.value) {
+    bestScore.value = seconds.value
+    window.localStorage.setItem(STORAGE_KEY, String(seconds.value))
+  }
 })
 
 const handleFlipCard = (payload: { position: number; faceValue: string }): void => {
@@ -67,10 +68,13 @@ const handlePlayAgain = (): void => {
       🔄 Reiniciar partida
     </button>
 
-    <!--
-      TODO 3: agregá <ResultsModal>, pasándole :open="modalOpen", :moves,
-      :seconds, :best-score="bestScore", y escuchando
-      @play-again="handlePlayAgain" y @close="modalOpen = false".
-    -->
+    <ResultsModal
+      :open="modalOpen"
+      :moves="moves"
+      :seconds="seconds"
+      :best-score="bestScore"
+      @play-again="handlePlayAgain"
+      @close="modalOpen = false"
+    />
   </div>
 </template>

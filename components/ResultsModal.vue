@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// 🧩 Clase 7 — Modal condicional + lógica con props
 interface Props {
   open: boolean
   moves: number
@@ -7,8 +6,7 @@ interface Props {
   bestScore: number | null
 }
 
-// TODO 1: declará las props con defineProps<Props>()
-
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
   (e: 'close'): void
@@ -21,12 +19,8 @@ const formatTime = (s: number): string => {
   return `${m}:${sec}`
 }
 
-// TODO 2: completá `isNewRecord`: devuelve true si bestScore no es null
-// Y seconds es menor que bestScore (ganaste más rápido que tu marca
-// anterior).
 const isNewRecord = (): boolean => {
-  // tu código acá
-  return false
+  return props.bestScore !== null && props.seconds < props.bestScore
 }
 </script>
 
@@ -55,11 +49,12 @@ const isNewRecord = (): boolean => {
         </div>
       </div>
 
-      <!--
-        TODO 3: mostrá "⭐ ¡Nuevo récord personal!" si isNewRecord() es
-        true; si no, y bestScore no es null, mostrá
-        "Tu mejor marca: {{ formatTime(bestScore) }}". Usá v-if / v-else-if.
-      -->
+      <div v-if="isNewRecord()" class="mb-6 p-3 bg-amber-100 border border-amber-300 rounded-xl text-center">
+        <p class="text-amber-700 font-semibold">⭐ ¡Nuevo récord personal!</p>
+      </div>
+      <div v-else-if="bestScore !== null" class="mb-6 text-center text-sm text-brand-500">
+        Tu mejor marca: <span class="font-semibold text-brand-700">{{ formatTime(bestScore) }}</span>
+      </div>
 
       <button type="button" class="btn-primary w-full text-lg" @click="emit('play-again')">
         Jugar otra vez 🎮

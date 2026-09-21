@@ -1,15 +1,15 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 7 — kit de inicio: El festejo
+## Clase 7 — solución: El festejo
 
-Tu tarea: completar los `TODO` en `components/ResultsModal.vue` (3) y en
-`pages/index.vue` (2). `utils/confetti.ts` ya está resuelto.
+El juego está completo: al encontrar todos los pares aparece un modal con
+confetti, movimientos y tiempo, y el mejor tiempo se guarda entre
+recargas de la página.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Al completar todos los pares debería aparecer un modal con confetti.
-
-Comparalo con `curso/clase-7-solucion`.
+Siguiente paso: `curso/clase-8-inicio` — personalizar colores, tipografía
+y las cartas propias. No hay más piezas nuevas, ¡a hacerlo tuyo!
