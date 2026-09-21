@@ -20,6 +20,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Memory Game construido con Nuxt 4 + Vue 3 + TailwindCSS' },
       ],
       link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
