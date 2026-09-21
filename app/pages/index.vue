@@ -131,23 +131,33 @@ const nombreTema = computed(() => temas[temaActivo.value].nombre)
 
     <!-- El tablero es el protagonista -->
     <div class="flex-1 w-full flex items-center justify-center py-4">
-      <Transition
-        mode="out-in"
-        enter-active-class="transition-all duration-300 ease-out"
-        enter-from-class="opacity-0 scale-95"
-        enter-to-class="opacity-100 scale-100"
-        leave-active-class="transition-all duration-150 ease-in"
-        leave-from-class="opacity-100 scale-100"
-        leave-to-class="opacity-0 scale-95"
-      >
-        <Board
-          :key="temaActivo"
-          :card-list="cardList"
-          :game-id="gameId"
-          :mismatch-positions="mismatchPositions"
-          @flip-card="handleFlipCard"
-        />
-      </Transition>
+      <ClientOnly>
+        <Transition
+          mode="out-in"
+          enter-active-class="transition-all duration-300 ease-out"
+          enter-from-class="opacity-0 scale-95"
+          enter-to-class="opacity-100 scale-100"
+          leave-active-class="transition-all duration-150 ease-in"
+          leave-from-class="opacity-100 scale-100"
+          leave-to-class="opacity-0 scale-95"
+        >
+          <Board
+            :key="temaActivo"
+            :card-list="cardList"
+            :game-id="gameId"
+            :mismatch-positions="mismatchPositions"
+            @flip-card="handleFlipCard"
+          />
+        </Transition>
+
+        <template #fallback>
+          <section class="game-grid" aria-hidden="true">
+            <div v-for="n in totalPairs * 2" :key="n" class="card-scene">
+              <div class="card-face card-face-front" />
+            </div>
+          </section>
+        </template>
+      </ClientOnly>
     </div>
 
     <footer class="text-center text-[10px] sm:text-xs text-brand-300">

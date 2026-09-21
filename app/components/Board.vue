@@ -21,14 +21,7 @@ const ENTER_STAGGER_MS = 35
 </script>
 
 <template>
-  <section
-    class="grid grid-cols-[repeat(4,60px)] auto-rows-[60px] gap-2
-           sm:grid-cols-[repeat(4,80px)] sm:auto-rows-[80px] sm:gap-3
-           md:grid-cols-[repeat(4,100px)] md:auto-rows-[100px] md:gap-4
-           lg:grid-cols-[repeat(4,120px)] lg:auto-rows-[120px]
-           justify-center mx-auto p-4 sm:p-6"
-    aria-label="Tablero de juego"
-  >
+  <section class="game-grid" aria-label="Tablero de juego">
     <GameCard
       v-for="card in cardList"
       :key="`${gameId}-${card.value}-${card.variant}`"
