@@ -1,14 +1,17 @@
 # 🧩 Mini Memory — Curso
 
-## Clase 3 — solución: Listas con v-for
+## Clase 4 — kit de inicio: El cerebro del juego
 
-`components/Board.vue` completo: recibe `cardList` y repite un `GameCard`
-por cada elemento con `v-for`, relayando el evento `select-card` como
-`flip-card` hacia arriba.
+Tu tarea: completar los 8 `TODO` en `composables/useMemoryGame.ts`.
+Es la clase más densa del curso — andá función por función junto con el
+instructor, probando cada una antes de pasar a la siguiente.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Siguiente paso: `curso/clase-4-inicio` (el composable `useMemoryGame.ts`).
+La página de prueba muestra botones con las cartas del mazo — al hacer
+click deberían voltearse, y si dos coinciden, quedar marcadas.
+
+Comparalo con `curso/clase-4-solucion`.
