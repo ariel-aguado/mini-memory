@@ -5,8 +5,8 @@
 Tu tarea: completar los 2 `TODO` en `components/Board.vue`.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Vas a ver un mazo de prueba de 6 cartas (3 pares). Cuando `Board.vue` esté
