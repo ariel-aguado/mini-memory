@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Memory Game construido con Nuxt 3 + Vue 3 + TailwindCSS' },
+        { name: 'description', content: 'Memory Game construido con Nuxt 4 + Vue 3 + TailwindCSS' },
       ],
     },
   },
