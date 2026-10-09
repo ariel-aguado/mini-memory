@@ -7,8 +7,8 @@ jugable de punta a punta: se pueden voltear cartas y encontrar pares.
 Todavía sin marcador, cronómetro ni modal de victoria.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Siguiente paso: `curso/clase-6-inicio` (ScoreBoard y Timer).
