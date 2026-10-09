@@ -6,8 +6,8 @@ Tu tarea: completar los `TODO` en `components/ResultsModal.vue` (3) y en
 `pages/index.vue` (2). `utils/confetti.ts` ya está resuelto.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Al completar todos los pares debería aparecer un modal con confetti.
