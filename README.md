@@ -7,8 +7,8 @@ Tu tarea: completar los `TODO` en `components/ScoreBoard.vue` (2) y
 hace falta tocarlo.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Comparalo con `curso/clase-6-solucion`.
