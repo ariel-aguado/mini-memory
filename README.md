@@ -6,8 +6,8 @@
 pares encontrados, estado y tiempo transcurrido en vivo.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Siguiente paso: `curso/clase-7-inicio` (el modal de victoria y el confetti).
