@@ -7,8 +7,8 @@ confetti, movimientos y tiempo, y el mejor tiempo se guarda entre
 recargas de la página.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Siguiente paso: `curso/clase-8-inicio` — personalizar colores, tipografía
