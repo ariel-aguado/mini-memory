@@ -6,8 +6,8 @@ No hay piezas nuevas — el juego ya funciona completo. Esta clase es para
 hacerlo tuyo.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ### Ideas para personalizar
