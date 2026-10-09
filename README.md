@@ -5,8 +5,8 @@
 Tu tarea: completar los 3 `TODO` en `components/GameCard.vue`.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Abrí [http://localhost:3000](http://localhost:3000). Vas a ver la misma carta
