@@ -7,8 +7,8 @@ Es la clase más densa del curso — andá función por función junto con el
 instructor, probando cada una antes de pasar a la siguiente.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 La página de prueba muestra botones con las cartas del mazo — al hacer
