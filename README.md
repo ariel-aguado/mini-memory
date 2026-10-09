@@ -9,8 +9,8 @@ Es el **prototipo base** del curso *"Construye tu primera web con piezas de Lego
 ## 🚀 Cómo arrancarlo
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Abre [http://localhost:3000](http://localhost:3000) y empieza a jugar.
