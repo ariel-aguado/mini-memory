@@ -7,8 +7,8 @@
 carta ya esté encontrada).
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Siguiente paso: `curso/clase-3-inicio` (el tablero con `v-for`).
