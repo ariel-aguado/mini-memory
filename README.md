@@ -6,8 +6,8 @@
 compara pares y sabe cuándo se ganó.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Siguiente paso: `curso/clase-5-inicio` (conectar todo en `pages/index.vue`
